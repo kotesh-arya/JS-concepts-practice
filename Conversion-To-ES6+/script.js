@@ -44,23 +44,53 @@ getMaxMultiple(2, 3, 4, 3, 22, 33, 44, 5, 444, 334, 22, 3, 43, 343433, 567, 2342
 
 // Hint: months with 31 days  January, March, May, July, August, October, and December.
 
-const userInputMonth = document.querySelector(".user-input-month");
-const click = document.querySelector(".click");
-const result = document.querySelector(".result");
+// const userInputMonth = document.querySelector(".user-input-month");
+// const click = document.querySelector(".click");
+// const result = document.querySelector(".result");
 
-const showMessage = () => console.log(userInputMonth.value);
-const monthArr = ["JANUARY", "MARCH", "MAY", "JULY", "AUGUST", "OCTOBER", "DECEMBER"];
-const checkMonth = () => {
-    console.log(userInputMonth.value.toUpperCase());
-    for (let i = 0; i < monthArr.length; i++) {
-        if (monthArr[i].includes(userInputMonth.value.toUpperCase())) {
-            result.innerHTML = "31days";
-            break; //--------------------------------------------->The crucial part 
-        } else {
-            result.innerHTML = "not a full month";
-        }
+// const showMessage = () => console.log(userInputMonth.value);
+// const monthArr = ["JANUARY", "MARCH", "MAY", "JULY", "AUGUST", "OCTOBER", "DECEMBER"];
+// const checkMonth = () => {
+//     console.log(userInputMonth.value.toUpperCase());
+//     for (let i = 0; i < monthArr.length; i++) {
+//         if (monthArr[i].includes(userInputMonth.value.toUpperCase())) {
+//             result.innerHTML = "31days";
+//             break; //--------------------------------------------->The crucial part 
+//         } else {
+//             result.innerHTML = "not a full month";
+//         }
+//     }
+
+
+// }
+// click.addEventListener("click", checkMonth);
+
+// -------------------------------------------------------------
+
+// Fizzbuzz - Write a program to return an array from 1 to 100. But for every multiple of 3, replace the number with "Fizz", for every multiple of 5, replace the number with "Buzz" and for every multiples of 3 & 5, replace with "FizzBuzz".
+
+// Your output should look something like this 1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, FizzBuzz, 16, 17 .....
+const convertedArr = () => {
+    const mainArr = [];
+    for (let i = 0; i < 100; i++) {
+        mainArr.push(i);
+
+        (mainArr[i] % 3 === 0) ?mainArr[i] = "Fizz":
+            (mainArr[i] % 5 === 0) ? mainArr[i] = "Buzz" :
+             (mainArr[i] % 3 && mainArr[i] % 5 === 0) ? mainArr[i] = "FizzBuzz" :
+              mainArr[i] = mainArr[i];
     }
-
+    console.log(mainArr);
 
 }
-click.addEventListener("click", checkMonth);
+convertedArr();
+
+// if (mainArr[i] % 3 === 0) {
+//     mainArr[i] = "Fizz";
+// } else if (mainArr[i] % 5 === 0) {
+//     mainArr[i] = "Buzz";
+// } else if (mainArr[i] % 3 && mainArr[i] % 5 === 0) {
+//     mainArr[i] = "FizzBuzz";
+// } else {
+//     mainArr[i] = mainArr[i];
+// }
