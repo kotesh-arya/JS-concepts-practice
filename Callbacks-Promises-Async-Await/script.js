@@ -71,4 +71,66 @@ const giveData = async () => {
 }
 giveData();
 
-///
+///Async Exercises
+
+//EX2 - challenge
+
+const strLength = (text, callBackFunc) => {
+
+    let charLength = text.length; //deriving the length if text passed in the main function itself as they way asked.
+    callBackFunc(22);    // passing the derived character length value  (IMP: whatever the value we pass into this argument, that will be used by the callbackfunction (nameLength))   :)
+}
+const nameLength = (charLength) => {
+    console.log(`Your name is ${charLength} char long`);   
+
+}
+strLength('kotesh', nameLength);
+
+//Ex-3 challenge
+
+const willThanosKillYou =(yourName , alive, dead) => {
+    if (yourName.length%2 === 0){
+        alive();
+    }else{
+        dead();
+    }
+}
+ const alive = () => {
+     console.log(`Yay! you are alive`)
+ }
+ const dead = () => {
+    console.log(`Give my phone to my sister :(`)
+}
+willThanosKillYou('kotes',alive,dead);
+
+
+ const displayNameWithDelay = (message, delay) =>{  //this main function simply pass the parameters into setTimeout
+    setTimeout(()=>{ console.log(message)},delay);  //passing the exact parameters into setTimeout and utilising them ready for future calling of the main function with argument values given by the user
+ }
+
+displayNameWithDelay('kotesh',3000);
+
+setTimeout(()=>{console.log(A)},0);
+setTimeout(()=>{console.log(B)},0);  //all of these gives out undefined
+setTimeout(()=>{console.log(C)},0);
+
+
+//Ex-6.1
+
+const printOftenWithDelay = (message,delay)=>{
+  setInterval(()=>console.log(message),delay)
+}
+printOftenWithDelay("vimal",1000);    
+
+//Homework question FAANG
+
+//Write a function that takes a number. Then print a countdown from that number to 0. At zero print "Bang Bang!" ← The important question is sometimes asked in FAANG interviews as well.
+
+// const simpleFunction = (digit,)    // do it later
+
+//Ex-7 : onClick in React
+
+// 7.1 ,7.2 do later for sure 
+
+
+ //session watched upto 1:05:36  
