@@ -78,59 +78,142 @@ giveData();
 const strLength = (text, callBackFunc) => {
 
     let charLength = text.length; //deriving the length if text passed in the main function itself as they way asked.
-    callBackFunc(22);    // passing the derived character length value  (IMP: whatever the value we pass into this argument, that will be used by the callbackfunction (nameLength))   :)
+    callBackFunc(22); // passing the derived character length value  (IMP: whatever the value we pass into this argument, that will be used by the callbackfunction (nameLength))   :)
 }
 const nameLength = (charLength) => {
-    console.log(`Your name is ${charLength} char long`);   
+    console.log(`Your name is ${charLength} char long`);
 
 }
 strLength('kotesh', nameLength);
 
 //Ex-3 challenge
 
-const willThanosKillYou =(yourName , alive, dead) => {
-    if (yourName.length%2 === 0){
+const willThanosKillYou = (yourName, alive, dead) => {
+    if (yourName.length % 2 === 0) {
         alive();
-    }else{
+    } else {
         dead();
     }
 }
- const alive = () => {
-     console.log(`Yay! you are alive`)
- }
- const dead = () => {
+const alive = () => {
+    console.log(`Yay! you are alive`)
+}
+const dead = () => {
     console.log(`Give my phone to my sister :(`)
 }
-willThanosKillYou('kotes',alive,dead);
+willThanosKillYou('kotes', alive, dead);
 
 
- const displayNameWithDelay = (message, delay) =>{  //this main function simply pass the parameters into setTimeout
-    setTimeout(()=>{ console.log(message)},delay);  //passing the exact parameters into setTimeout and utilising them ready for future calling of the main function with argument values given by the user
- }
+//  const displayNameWithDelay = (message, delay) =>{  //this main function simply pass the parameters into setTimeout
+//     setTimeout(()=>{ console.log(message)},delay);  //passing the exact parameters into setTimeout and utilising them ready for future calling of the main function with argument values given by the user
+//  }
 
-displayNameWithDelay('kotesh',3000);
+// displayNameWithDelay('kotesh',3000);
 
-setTimeout(()=>{console.log(A)},0);
-setTimeout(()=>{console.log(B)},0);  //all of these gives out undefined
-setTimeout(()=>{console.log(C)},0);
+setTimeout(() => {
+    console.log(A)
+}, 0);
+setTimeout(() => {
+    console.log(B)
+}, 0); //all of these gives out undefined
+setTimeout(() => {
+    console.log(C)
+}, 0);
 
 
 //Ex-6.1
 
-const printOftenWithDelay = (message,delay)=>{
-  setInterval(()=>console.log(message),delay)
-}
-printOftenWithDelay("vimal",1000);    
+// const printOftenWithDelay = (message,delay)=>{
+//   setInterval(()=>console.log(message),delay)
+// }
+// printOftenWithDelay("vimal",1000);    
 
-//Homework question FAANG
+//Ex-6.2
+//Homework question FAANG Bomb-exercise
 
 //Write a function that takes a number. Then print a countdown from that number to 0. At zero print "Bang Bang!" ← The important question is sometimes asked in FAANG interviews as well.
 
-// const simpleFunction = (digit,)    // do it later
+
+const goldFunc = (digit) => {
+    const myGoldInterval = setInterval(() => {
+        let counter = digit;
+        if (digit === 0) {
+            console.log("Bang-Bang!");
+            resistInterval();
+        } else {
+            console.log(digit--);
+        }
+    }, 1000);
+    const resistInterval = () => {
+        clearInterval(myGoldInterval);
+    }
+
+}
+goldFunc(9);
+
 
 //Ex-7 : onClick in React
 
-// 7.1 ,7.2 do later for sure 
+// 7.1 ,7.2 done , CSB-Link : https://codesandbox.io/s/asyncjs-ex-7-k9nwvi 
 
 
- //session watched upto 1:05:36  
+//Live Ex-11,12
+// print data on success, print error on failure using fakeFetch
+
+
+// const simplePromiseValidation = (text)=>{
+//   new Promise((resolve,reject)=>{
+//     if(text.length%2===0){
+//       resolve(console.log(`the text ${text} has even number of characters`));
+//     }else{
+//       reject(console.log(`the letters in ${text} are odd in number`));
+//     }
+//   })
+// }
+//  simplePromiseValidation("kotesh");
+
+
+//Live Ex-13 chaining
+
+// const getServerResponseLength =(msg)=> fakeFetch(msg).then(data => data.length);
+
+
+// getServerResponseLength("kotesh");
+
+//Live Ex-14,16
+
+//   const syncCallsToServer = async (message1,message2) =>{
+//     try{
+//       const messageData1 = await fakeFetch(message1)
+//       const messageData2 = await fakeFetch(message2)
+//        console.log({messageData1,messageData2})
+
+//     }catch {
+//       console.error("error Dude");
+//     }
+//   };
+//   syncCallsToServer("Thanks", "Kotesh-Bhai");
+
+//Live Ex-15
+
+
+// const callFakeFetch = async (message2) => {
+
+//   try{
+//     const response = await fakeFetch(message2);
+//   console.log(response);
+//   }catch {
+//     console.error("error bhai");
+//   }
+
+// };
+// callFakeFetch("Naidu");
+
+// For tomorrow 
+
+// h/w convert all promise related questions to async await
+// Do this for all the exercises above.
+// Take care of error handling as well.
+// Read about it here https://javascript.info/async-await
+
+//h/w important: parallel calls in async-await
