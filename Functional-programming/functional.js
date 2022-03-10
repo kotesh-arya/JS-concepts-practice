@@ -129,26 +129,254 @@ console.log(numObj);
 
 //Reduce function in the form of for loop   webdevsimplified ref
 
-let sapmleArr = [1, 2, 3, 4, 3, 3, 3, 3, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5];
+let sapmleArr = [1, 2, 3, 3, 3, 3, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5];
 let answer = 0; //initialised the accumilator variable outside the loop so that It won't be a constant for each iteration :)
 for (let i = 0; i < sapmleArr.length; i++) {
     answer = answer + sapmleArr[i]; //answer variable is accessable inside this for loop also, so we are adding each element to the answer and assigning it to the answer again so that it will be updated with new value that obtained after addition in each iteration. 
 }
 console.log(answer);
-
+// --------------------------------------------------------
 let digits = [1, 3, 5, 2, 22, 11, 9];
+const sampleObj = {
+    even: 0,
+    odd: 0
+};
 
-const sampleObj = {even:0, odd:0};
-
-const reducer =(sampleObj,num)=>{
-    if(num%2===0){
-        return {...sampleObj, even:sampleObj.even+num}
-    }else{
-        return {...sampleObj, odd:sampleObj.odd+num}
+const reducer = (sampleObj, num, index) => {
+    // console.log(sampleObj)
+    // console.log(index);
+    if (num % 2 === 0) {
+        return {
+            ...sampleObj,
+            even: sampleObj.even + num
+        }
+    } else {
+        return {
+            ...sampleObj,
+            odd: sampleObj.odd + num
+        }
     }
 }
-let finalResult = digits.reduce(reducer,sampleObj);
-    console.log(finalResult);
+let finalResult = digits.reduce(reducer, sampleObj);
+console.log(finalResult);
+
+// --------------------------------------------------------------
+
+//Homework questions on Reduce
+
+
+const digits2 = [13, 32, 53, 100, 400, 53, 16, 57];
+
+// numbers at odd indices are --> [32,44,16]
+
+const oddIndexReducer = (prevSum, currNum, index) => (index % 2 === 0) ? prevSum : prevSum + currNum;
+// -----------genericway(without-terinary-operator------
+//  {
+// //  console.log(index%2===0);
+// console.log(currNum);
+// //  console.log(index);
+//     if (index % 2 === 0) {
+//         return  prevSum + currNum 
+//     } else {
+//         return  prevSum
+//     }
+// } 
+const answer1 = digits2.reduce(oddIndexReducer, 0);
+// console.log(answer1);
+
+//Biggest number in the array
+
+const biggestReducer = (prevSum, currNum) => {
+    if (currNum > prevSum) {
+        return currNum
+    } else {
+        return prevSum
+    }
+}
+
+const biggestResult = digits2.reduce(biggestReducer, 0);
+// console.log(biggestResult);
+
+// ----------------------------------------------------
+const nums = [13, 32, 53, 100, 400, 53, 16, 57];
+const evenOddIncrement = nums.map((digit) => {
+    if (digit % 2 === 0) {
+        return digit - 1
+    } else {
+        return digit + 1
+    }
+})
+console.log(evenOddIncrement);
+
+const divisibleBy10 = nums.filter((digit) => digit % 10 === 0);
+console.log(divisibleBy10);
+//an object with sum of all odd and even numbers
+
+const evenOddObj1 = {
+    even: 0,
+    odd: 0
+}
+
+const evenOddReducer = (evenOddObj1, num) => {
+    if (num % 2 === 0) {
+        return {
+            ...evenOddObj1,
+            even: evenOddObj1.even + num
+        }
+    } else {
+        return {
+            ...evenOddObj1,
+            odd: evenOddObj1.odd + num
+        }
+    }
+
+}
+const finalResult1 = nums.reduce(evenOddReducer, evenOddObj1);
+
+console.log(finalResult1);
+// ----------------------------------------------
+
+
+
+
+
+const fruits3 = ["apple", "orange", "mango", "papaya", "sdsds"];
+
+const fruitReducer1 = (acc, curr) => {
+    console.log(curr.length)
+    if (acc[curr.length] === undefined) {
+        return {
+            ...acc,
+            [curr.length]: 1
+        }
+    } else {
+        return {
+            ...acc,
+            [curr.length]: acc[curr.length] + 1
+        }
+
+    }
+
+}
+
+const fruitResult = fruits3.reduce(fruitReducer1, {});
+console.log(fruitResult);
+
+
+
+
+
+
+
+
+
+
+// const futObj = {
+//     mona: "ee"
+// }
+// console.log(futObj.mona);
+
+
+
+
+
+
+
+
+const fruits4 = ["apple", "orange", "mango", "papaya", "bappana"];
+
+
+const finalMap = fruits4.map((item) => {
+    return {
+        [item]: item.length
+    }
+});
+
+console.log(finalMap);
+
+//return an array with strings having owels 
+const owels = ["a", "e", "i", "o", "u"]
+
+const fruits5 = ["apple", "orange", "mango", "papaya", "bappana"];
+
+const matchFruits = fruits5.filter((fruit) => fruit.includes('a'));
+
+console.log(matchFruits); //Have to make more clear in free time
+
+//Currying function 
+const GreetWithName = (user) => (greet) => `${greet} ${user}`;
+
+console.log(GreetWithName('kotesh')("hello"));
+
+//Composition Example
+//the output of a function is used as an input fot other function
+
+const big = (reply) => {
+    return `${reply} Ramsay`
+}
+const reply = (text) => {
+    return `${text}`
+};
+
+
+const compoResult = big(reply('thank you!'));
+console.log(compoResult);
+
+//This is basically using the output of reply function and using that output inside big function.
+
+const userNameLogger = (userName) => `name is ${userName}`;
+const idLogger = (id) => `ID is ${id}`;
+
+const composedFunction = (first, second) => `the person ${first} and ${second}`;
+
+const result7 = composedFunction(userNameLogger("kotesh"), idLogger(21614013));
+console.log(result7); //:))))))))happy 
+// --------------------------THE ONE HOMEWORK-------------------
+const increment = (digit) => digit + 1;
+const square = (digit) => digit * digit;
+// const compose =(square)=> square(digit)=>
+// const incrementedResult = increment(3);
+// console.log(incrementedResult);
+const finalResult4 = square(increment(2));
+console.log(finalResult4);
+//  const  finalResult4 = compose(square(increment(3)));
+//  console.log(finalResult4);
+const compose = (increment, square) => {};
+const incrementThenSquare = compose(increment, square);
+
+
+
+
+
+
+
+
+
+//sum of odd numbers in an array
+//  const oddReducer = (prevSum,currNum)=>{
+//      if(currNum%2 ===0){
+//          return prevSum         //if current-number is even then no adding b/w the numbers instead return the PREV-SUM which is the SUM OF PREVIOUS INSTANCE   :)
+//      }else{
+//          return prevSum +currNum   // if it is odd then do the addition  
+//      }
+//  }
+//  let final1 = digits2.reduce(oddReducer);
+//  console.log(final1);
+
+//sum of numbers in odd indices
+
+//Return an array which have owels inside its string items
+//  const owels = ["a","e","i","o","u"]
+const owelFruit = fruits3.filter((fruit) => fruit.split("").includes("a"));
+
+// console.log(owelFruit);
+
+
+
+
+
+
+
 
 // const reducer = (prevSum, currNum) => {
 //     if (currNum % 2 === 0) {
