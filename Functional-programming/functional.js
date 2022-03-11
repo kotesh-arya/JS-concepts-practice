@@ -331,18 +331,32 @@ const composedFunction = (first, second) => `the person ${first} and ${second}`;
 
 const result7 = composedFunction(userNameLogger("kotesh"), idLogger(21614013));
 console.log(result7); //:))))))))happy 
+
+
+
 // --------------------------THE ONE HOMEWORK-------------------
+
+
 const increment = (digit) => digit + 1;
+const decrement = (digit) => digit - 1;
 const square = (digit) => digit * digit;
-// const compose =(square)=> square(digit)=>
-// const incrementedResult = increment(3);
-// console.log(incrementedResult);
-const finalResult4 = square(increment(2));
+const multiplyWithFour = (digit) => digit * 4;
+
+
+
+const finalResult4 = decrement(square(increment(2))); //for definite number of functions
 console.log(finalResult4);
-//  const  finalResult4 = compose(square(increment(3)));
-//  console.log(finalResult4);
-const compose = (increment, square) => {};
-const incrementThenSquare = compose(increment, square);
+
+
+
+const composeMain = (...functions) => digit =>
+    functions.reduce((acc, curr) => {
+        return curr(acc)
+    }, digit)
+
+
+const result8 = composeMain(increment, square, decrement, multiplyWithFour); // for indefinite number of functions
+console.log(result8(2)); //currying done 
 
 
 
@@ -352,18 +366,10 @@ const incrementThenSquare = compose(increment, square);
 
 
 
-//sum of odd numbers in an array
-//  const oddReducer = (prevSum,currNum)=>{
-//      if(currNum%2 ===0){
-//          return prevSum         //if current-number is even then no adding b/w the numbers instead return the PREV-SUM which is the SUM OF PREVIOUS INSTANCE   :)
-//      }else{
-//          return prevSum +currNum   // if it is odd then do the addition  
-//      }
-//  }
-//  let final1 = digits2.reduce(oddReducer);
-//  console.log(final1);
 
-//sum of numbers in odd indices
+
+
+
 
 //Return an array which have owels inside its string items
 //  const owels = ["a","e","i","o","u"]
