@@ -407,3 +407,32 @@ const owelFruit = fruits3.filter((fruit) => fruit.split("").includes("a"));
 //  const oddSum = (sum,num) => num%2===0 ? sum : sum+num;
 
 //  console.log(oddSum(2,4))
+
+//Exercises by Ak
+
+// Given an array. Write a function to change all even numbers in an array to odd numbers by adding 1 to it.
+
+// const arr = [1, 2, 3, 58, 5, 6, 24, 8, 15, 4];
+
+// Your output should be:
+// [1, 3, 3, 59, 5, 7, 25, 9, 15, 5]
+
+// const changeToOdd =() => arr.map(item => {
+
+//     if (item % 2 === 0) {
+//         return item + 1
+//     } else {
+//         return item
+//     }
+
+// })
+
+// console.log(changeToOdd());
+
+
+// 2. Given an array. ****Write a function that takes in the given array and prints only the numbers which are less than 8 and also an even number.
+
+
+// const arr2 = [1, 2, 3, 58, 5, 6, 24, 8, 15, 4];
+//  const filteredLessEven = arr2.filter(digit=> digit<8 && digit%2==0);
+// console.log(filteredLessEven);
